@@ -10,7 +10,7 @@ const Menu = styled.ul`
   .itens {                /* Define estilos para elementos com a classe "itens" dentro da lista */
     list-style: none;     /* Remove os marcadores de lista (pontos ou números) */
     height: 100%;         /* Define a altura dos itens como 100% da altura do contêiner */
-    cursor: pointer;      /* Altera o cursor do mouse quando passa sobre os itens para indicar que são interativos */
+    cursor: pointer;      /* Altera o cursor do mouse quando passa sobre os itens para indicar que são interativos  */
   }
 `
 function MenuNavegacao() { // Define um componente React chamado "MenuNavegacao"
