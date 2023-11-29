@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function App() {
+  const [mensagemAPI, setMensagemAPI] = useState('');
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/api/exemplo')
+      .then(response => {
+        setMensagemAPI(response.data.mensagem);
+      })
+      .catch(error => {
+        console.error('Erro ao obter dados da API:', error);
+      });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>{mensagemAPI}</h1>
     </div>
   );
 }
