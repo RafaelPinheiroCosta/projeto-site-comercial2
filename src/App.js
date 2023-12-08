@@ -1,22 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { getObjetos } from './services/objetos';
 
 function App() {
-  const [mensagemAPI, setMensagemAPI] = useState('');
+  const [objetosAPI, setObjetosAPI] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/api/exemplo')
-      .then(response => {
-        setMensagemAPI(response.data.mensagem);
-      })
-      .catch(error => {
-        console.error('Erro ao obter dados da API:', error);
-      });
+    fetchObjetos()
   }, []);
+
+  async function fetchObjetos() {
+
+    const response = await getObjetos
+    setObjetosAPI(response)
+  }
 
   return (
     <div>
-      <h1>{mensagemAPI}</h1>
+
+      <h1>teste2
+
+      {
+        objetosAPI.map(objeto => (
+
+          <h1>{objeto.nome}</h1>
+
+        ))
+      }
+      </h1>
     </div>
   );
 }
